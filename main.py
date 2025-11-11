@@ -108,6 +108,7 @@ scrollbar = tk.Scrollbar(frame_top_1, orient="vertical")
 listbox_1 = tk.Listbox(frame_top_1, width=20, height=10, yscrollcommand=scrollbar.set, selectmode=tk.SINGLE)
 scrollbar.config(command=listbox_1.yview)
 cities = get_cities()
+
 for index, city in enumerate(cities):
     listbox_1.insert(index, city)
 listbox_1.grid(row=1, column=0)

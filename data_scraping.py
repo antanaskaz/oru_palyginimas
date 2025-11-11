@@ -7,8 +7,14 @@ from datetime import date, timedelta
 
 def get_cities():
     url = "https://lt.wikipedia.org/wiki/Sąrašas:Lietuvos_miestai"
-    response = requests.get(url)
-    city_table = pd.read_html(StringIO(response.text))[1]
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:132.0) "
+            "Gecko/20100101 Firefox/132.0"
+        )
+    }
+    response = requests.get(url, headers=headers)
+    city_table = pd.read_html(StringIO(response.text))[1] # city_table = pd.read_html(StringIO(response.text))[1]
     city_names = city_table.loc[:, "Miestas"]
     return list(city_names)
 
